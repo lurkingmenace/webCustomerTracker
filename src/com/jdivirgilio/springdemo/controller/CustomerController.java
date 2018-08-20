@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.jdivirgilio.springdemo.dao.CustomerDAO;
 import com.jdivirgilio.springdemo.entity.Customer;
+import com.jdivirgilio.springdemo.service.CustomerService;
 
 @Controller
 @RequestMapping("/customer")
@@ -17,14 +18,18 @@ public class CustomerController {
 
 	// Now we need to inject our DAO into controller class
 	// Spring will look for CustomerDAO and inject the value here
+	// Since we've added the service we need to inject the Service now
+	//@Autowired
+	//private CustomerDAO customerDAO;
+	
 	@Autowired
-	private CustomerDAO customerDAO;
+	private CustomerService customerService;
 
 	@GetMapping("/list")
 	public String listCustomers(Model model) {
 		
 		// get customer from the DAO
-		List<Customer> customers = customerDAO.getCustomers();
+		List<Customer> customers = customerService.getCustomers();
 		
 		// add the customers to the model
 		model.addAttribute("customers", customers);
