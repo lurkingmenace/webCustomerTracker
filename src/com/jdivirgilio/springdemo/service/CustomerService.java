@@ -2,6 +2,8 @@ package com.jdivirgilio.springdemo.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import com.jdivirgilio.springdemo.entity.Customer;
 
 public interface CustomerService {
